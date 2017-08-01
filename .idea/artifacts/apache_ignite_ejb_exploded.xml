@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ejb" name="apache-ignite:ejb exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/apache_ignite_ejb_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="apache-ignite/ejb/EJB" />
+      <element id="javaee-facet-classes" facet="apache-ignite/ejb/EJB" />
+    </root>
+  </artifact>
+</component>
