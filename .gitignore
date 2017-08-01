@@ -2,3 +2,7 @@
 *.iml
 */target
 */out
+
+*.war
+*.ear
+*.class
