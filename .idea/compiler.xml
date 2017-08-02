@@ -9,8 +9,8 @@
         <module name="apache-ignite" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="apache-ignite" target="1.5" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="apache-ignite" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

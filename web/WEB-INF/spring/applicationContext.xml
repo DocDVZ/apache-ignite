@@ -28,17 +28,29 @@
         <constructor-arg ref="hikariConfig"/>
     </bean>
 
+    <bean id="ignite-starter" class="ru.iitdgroup.app.IgniteStarter" init-method="init"/>
+
     <bean id="sessionFactory"
-          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="ru.iitdgroup.model" />
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" depends-on="ignite-starter">
+        <property name="dataSource" ref="dataSource"/>
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
-                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
-                <prop key="hibernate.connection.provider_class">${hibernate.dialect}</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.cache.use_query_cache">true</prop>
+                <prop key="hibernate.generate_statistics">true</prop>
+                <prop key="hibernate.cache.use_second_level_cache">true</prop>
+                <prop key="hibernate.cache.region.factory_class">org.apache.ignite.cache.hibernate.HibernateRegionFactory</prop>
+                <prop key="org.apache.ignite.hibernate.grid_name">hibernate-grid</prop>
+                <prop key="org.apache.ignite.hibernate.default_access_type">READ_ONLY</prop>
             </props>
         </property>
     </bean>
+
+
+
+
 
 </beans>

@@ -15,9 +15,8 @@
         <slf4j.version>1.7.6</slf4j.version>
         <log4j.version>2.0-rc1</log4j.version>
         <springframework.version>4.3.9.RELEASE</springframework.version>
-        <hibernate.version>5.2.9.Final</hibernate.version>
+        <hibernate.version>4.2.14.Final</hibernate.version>
         <hikari.version>2.6.3</hikari.version>
-        <hibernate.validator.version>5.4.1.Final</hibernate.validator.version>
         <mockito.version>1.9.5</mockito.version>
     </properties>
 
@@ -94,12 +93,35 @@
             <version>${hikari.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.apache.ignite/ignite-core -->
+        <dependency>
+            <groupId>org.apache.ignite</groupId>
+            <artifactId>ignite-core</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.ignite/ignite-hibernate-core -->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.ignite</groupId>-->
+            <!--<artifactId>ignite-hibernate_5.1</artifactId>-->
+            <!--<version>RELEASE</version>-->
+        <!--</dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.ignite/ignite-hibernate -->
+        <dependency>
+            <groupId>org.apache.ignite</groupId>
+            <artifactId>ignite-hibernate</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+
         <!-- https://mvnrepository.com/artifact/org.apache.ignite/ignite-hibernate-core -->
         <dependency>
             <groupId>org.apache.ignite</groupId>
             <artifactId>ignite-hibernate-core</artifactId>
             <version>2.1.0</version>
         </dependency>
+
 
 
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -114,11 +136,6 @@
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
             <version>1.1.0.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate.validator.version}</version>
         </dependency>
 
         <!-- Servlet+JSP+JSTL -->
