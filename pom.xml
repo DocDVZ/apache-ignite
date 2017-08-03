@@ -7,6 +7,8 @@
     <groupId>ru.iitdgroup</groupId>
     <artifactId>apache-ignite</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -100,28 +102,18 @@
             <version>2.1.0</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.ignite/ignite-hibernate-core -->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.ignite</groupId>-->
-            <!--<artifactId>ignite-hibernate_5.1</artifactId>-->
-            <!--<version>RELEASE</version>-->
-        <!--</dependency>-->
-
-        <!-- https://mvnrepository.com/artifact/org.apache.ignite/ignite-hibernate -->
         <dependency>
             <groupId>org.apache.ignite</groupId>
-            <artifactId>ignite-hibernate</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/org.apache.ignite/ignite-hibernate-core -->
-        <dependency>
-            <groupId>org.apache.ignite</groupId>
-            <artifactId>ignite-hibernate-core</artifactId>
+            <artifactId>ignite-spring</artifactId>
             <version>2.1.0</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>org.apache.ignite</groupId>
+            <artifactId>ignite-hibernate_4.2</artifactId>
+            <version>2.1.0</version>
+        </dependency>
 
 
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -179,19 +171,23 @@
         <plugins>
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
-                    <webXml>src/main/resources/WEB-INF/web.xml</webXml>
-                    <webResources>
-                        <resource>
-                            <directory>public_html</directory>
-                        </resource>
-                    </webResources>
+                    <webXml>web/WEB-INF/web.xml</webXml>
                 </configuration>
             </plugin>
 
         </plugins>
 
     </build>
-    
+
 </project>

@@ -20,12 +20,38 @@
         <property name="writeSynchronizationMode" value="FULL_SYNC"/>
     </bean>
 
+
+
     <bean id="ignite.cfg" class="org.apache.ignite.configuration.IgniteConfiguration">
         <!--
             Specify the name of the caching grid (should correspond to the
             one in Hibernate configuration).
         -->
         <property name="igniteInstanceName" value="hibernate-grid"/>
+        <property name="clientMode" value="true"/>
+        <!--<property name="localHost" value="127.0.0.1"/>-->
+
+        <property name="discoverySpi">
+            <bean class="org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi">
+                <property name="ipFinder">
+                    <bean class="org.apache.ignite.spi.discovery.tcp.ipfinder.multicast.TcpDiscoveryMulticastIpFinder">
+                        <!--<property name="addresses">-->
+                            <!--<list>-->
+                                <!--<value>127.0.0.1:47499</value>-->
+                            <!--</list>-->
+                        <!--</property>-->
+                    </bean>
+                </property>
+                <!--<property name="localAddress" value="127.0.0.1"/>-->
+                <!--<property name="localPort" value="47501"/>-->
+            </bean>
+        </property>
+
+        <property name="communicationSpi">
+            <bean class="org.apache.ignite.spi.communication.tcp.TcpCommunicationSpi">
+                <property name="localAddress" value="127.0.0.1"/>
+            </bean>
+        </property>
 
         <!--
             Specify cache configuration for each L2 cache region (which corresponds
