@@ -39,12 +39,12 @@
         <property name="org.apache.ignite.hibernate.default_access_type">READ_ONLY</property>
 
         <!-- Specify the entity classes for mapping. -->
-        <mapping class="ru.iitdgroup.model.MyEntity1"/>
-        <mapping class="ru.iitdgroup.model.MyEntity2"/>
+        <!--<mapping class="ru.iitdgroup.model.MyEntity1"/>-->
+        <!--<mapping class="ru.iitdgroup.model.MyEntity2"/>-->
 
         <!-- Per-class L2 cache settings. -->
-        <class-cache class="ru.iitdgroup.model.MyEntity1" usage="read-only"/>
-        <class-cache class="ru.iitdgroup.model.MyEntity2" usage="read-only"/>
-        <collection-cache collection="com.mycompany.MyEntity1.children" usage="read-only"/>
+        <!--<class-cache class="ru.iitdgroup.model.MyEntity1" usage="read-only"/>-->
+        <!--<class-cache class="ru.iitdgroup.model.MyEntity2" usage="read-only"/>-->
+        <!--<collection-cache collection="com.mycompany.MyEntity1.children" usage="read-only"/>-->
     </session-factory>
 </hibernate-configuration>
