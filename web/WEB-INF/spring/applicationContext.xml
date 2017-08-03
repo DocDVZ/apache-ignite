@@ -28,7 +28,7 @@
         <constructor-arg ref="hikariConfig"/>
     </bean>
 
-    <bean id="ignite-starter" class="ru.iitdgroup.app.IgniteStarter" init-method="init"/>
+    <bean id="ignite-starter" class="ru.iitdgroup.app.IgniteStarter" init-method="init" destroy-method="finish"/>
 
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" depends-on="ignite-starter">

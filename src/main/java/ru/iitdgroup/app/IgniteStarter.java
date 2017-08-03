@@ -12,15 +12,12 @@ public class IgniteStarter {
 
     public void init() {
 
-//        Properties p = System.getProperties();
-//        Enumeration keys = p.keys();
-//        while (keys.hasMoreElements()) {
-//            String key = (String)keys.nextElement();
-//            String value = (String)p.get(key);
-//            System.out.println(key + ": " + value);
-//        }
         String path = System.getProperty("catalina.home") + "\\conf\\ignite-config.xml";
         Ignition.start(path);
-//        Ignition.start();
+
+    }
+
+    public void finish(){
+        Ignition.stopAll(true);
     }
 }
