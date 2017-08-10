@@ -28,8 +28,15 @@
             one in Hibernate configuration).
         -->
         <property name="igniteInstanceName" value="hibernate-grid"/>
-        <property name="clientMode" value="true"/>
+        <property name="clientMode" value="false"/>
+        <property name="metricsLogFrequency" value="300"/>
         <!--<property name="localHost" value="127.0.0.1"/>-->
+        <property name="sqlConnectorConfiguration">
+            <bean class="org.apache.ignite.configuration.SqlConnectorConfiguration">
+                <property name="host" value="localhost"/>
+                <property name="port" value="10800"/>
+            </bean>
+        </property>
 
         <property name="discoverySpi">
             <bean class="org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi">

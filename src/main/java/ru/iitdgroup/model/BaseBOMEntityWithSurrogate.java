@@ -2,6 +2,7 @@ package ru.iitdgroup.model;
 
 import javax.persistence.*;
 
+import static javax.persistence.GenerationType.AUTO;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @MappedSuperclass
@@ -11,7 +12,7 @@ public class BaseBOMEntityWithSurrogate {
 
 
 	@Id
-	@GeneratedValue(strategy=SEQUENCE)
+//	@GeneratedValue(strategy=AUTO)
 	@Access(AccessType.PROPERTY)
 	private Long id;
 

@@ -10,7 +10,7 @@
         <property name="location" value="application.properties"/>
     </bean>
 
-    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig" >
         <property name="poolName" value="springHikariCP"/>
         <property name="connectionTestQuery" value="SELECT 1"/>
         <property name="driverClassName" value="${hikari.driver}"/>
@@ -20,32 +20,34 @@
         <property name="autoCommit" value="${hikari.autocommit}"/>
         <property name="maximumPoolSize" value="${hikari.maximumPoolSize}"/>
         <property name="idleTimeout" value="${hikari.idleTimeout}"/>
-
     </bean>
 
     <!-- HikariCP configuration -->
     <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
         <constructor-arg ref="hikariConfig"/>
+        <property name="autoCommit" value="false"/>
     </bean>
 
-    <bean id="ignite-starter" class="ru.iitdgroup.app.IgniteStarter" init-method="init" destroy-method="finish"/>
+    <!--<bean id="ignite-starter" class="ru.iitdgroup.app.IgniteStarter" init-method="init" destroy-method="finish"/>-->
 
     <bean id="sessionFactory"
-          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" depends-on="ignite-starter">
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" >
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="ru.iitdgroup.model.*"/>
+        <property name="packagesToScan" value="ru.iitdgroup.model*"/>
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="show_sql">true</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
                 <prop key="hibernate.format_sql">true</prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.cache.use_query_cache">true</prop>
+                <!--<prop key="hibernate.cache.use_query_cache">true</prop>-->
                 <prop key="hibernate.generate_statistics">true</prop>
-                <prop key="hibernate.cache.use_second_level_cache">true</prop>
-                <prop key="hibernate.cache.region.factory_class">org.apache.ignite.cache.hibernate.HibernateRegionFactory</prop>
-                <prop key="org.apache.ignite.hibernate.grid_name">hibernate-grid</prop>
-                <prop key="org.apache.ignite.hibernate.default_access_type">READ_ONLY</prop>
+                <prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
+                <prop key="hibernate.cache.use_second_level_cache">false</prop>
+                <!--<prop key="hibernate.cache.region.factory_class">org.apache.ignite.cache.hibernate.HibernateRegionFactory</prop>-->
+                <!--<prop key="org.apache.ignite.hibernate.grid_name">hibernate-grid</prop>-->
+                <!--<prop key="org.apache.ignite.hibernate.default_access_type">READ_ONLY</prop>-->
             </props>
         </property>
     </bean>

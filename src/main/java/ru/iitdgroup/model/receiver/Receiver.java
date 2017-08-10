@@ -17,7 +17,7 @@ import ru.iitdgroup.model.BusinessKey;
 @Table(name = "Receiver")
 
 @DiscriminatorColumn(name = "object_type", length = 255, discriminatorType = DiscriminatorType.STRING)
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Receiver extends BaseBOMEntityWithSurrogate implements BusinessKey {
 
 	private static final long serialVersionUID = 1L;
